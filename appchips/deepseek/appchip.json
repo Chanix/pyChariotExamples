@@ -1,0 +1,17 @@
+{
+  "name": "DeepSeek",
+  "version": "1.0.0",
+  "description": "深度求索桌面版",
+  "url": "https://chat.deepseek.com/",
+  "win_title": "深度求索",
+  "win_width": 1200,
+  "win_height": 800,
+  "win_min_width": 400,
+  "win_min_height": 200,
+  "win_hidden": false,
+  "win_confirm_close": false,
+  "win_on_top": false,
+  "win_resizable": true,
+  "win_fullscreen": false,
+  "text_select": true
+}
