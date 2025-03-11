@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        html {
+            background-color: #eee;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin: 3px;
+        }
+
+        pre {
+            background-color: #eee;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        window.addEventListener('pyChariotReady', async function () {
+            container = document.getElementById('appchips_installed')
+            appchips_installed = await __A.appchip.list();
+            if (appchips_installed.length > 0) {
+                let eleP = document.createElement('h2')
+                eleP.textContent = '已安装小应用：'
+                container.appendChild(eleP);
+            }
+
+            for (let i = 0; i < appchips_installed.length; i++) {
+                let appchip_name = appchips_installed[i];
+                if (appchip_name !== 'default') {
+                    let run_button = document.createElement('button');
+
+                    run_button.textContent = appchip_name;
+                    run_button.addEventListener('click', function () {
+                        __A.appchip.run(appchip_name);
+                    });
+                    run_button.style.marginRight = "20px";
+                    container.appendChild(run_button);
+                }
+            }
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+<h1>pyChariot</h1>
+<p>pyChariot 启动后将按顺序搜索、装载并执行项目。
+    如果未指定或装载时出现错误，则默认运行本项目。
+    如果这不是您希望的结果，请检查项目是否规范，并按约定存储在正确的文件夹中。</p>
+<p>如果不理解以上描述，请联系您的 IT 工程师（软件提供方）或 参阅相关文档。</p>
+
+
+
+<div id="appchips_installed"></div>
+<!--<h2>从网址安装</h2>-->
+<!--<div>-->
+<!--    <input type="text" placeholder="请输入项目安装网址"/>-->
+<!--    <button>安装</button>-->
+<!--</div>-->
+</body>
+</html>
