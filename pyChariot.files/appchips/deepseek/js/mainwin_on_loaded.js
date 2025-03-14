@@ -83,9 +83,6 @@ modal.appendChild(modalContent);
 // 将浮层添加到页面中
 document.body.appendChild(modal);
 
-
-
-
 // 监听键盘事件，实现小应用快捷键。
 document.addEventListener(
     'keydown',
@@ -182,4 +179,16 @@ function handleCtrlAltS() {
     document.getElementsByClassName('ds-button__icon')[1].parentElement.click()
 }
 
+// 切换窗口状态（恢复，最小化）
+async function hotkeyHandleCtrlAltZ() {
+    console.log('Hotkey ctrl+alt+z pressed.');
 
+    x = await __A.mainwin.getX();
+    if (x == -32000) {
+        __A.mainwin.restore();
+    } else {
+        __A.mainwin.minimize();
+    }
+}
+
+__A.hotkey.set('ctrl+alt+z', 'hotkeyHandleCtrlAltZ();')
